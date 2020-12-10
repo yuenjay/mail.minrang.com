@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>企业邮箱 - 长沙民壤网络科技有限公司</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="keywords" content="民壤网络,民壤网络企业邮箱" />
+    <meta name="description" itemprop="description" content="长沙民壤网络科技有限公司的企业邮箱系统." />
+    <meta itemprop="name" content="企业邮箱" />
+    <link rel="alternate" href="https://mail.minrang.com" hreflang="zh-Hans" />
+    <link rel="stylesheet" href="css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+    <div id="wrapper">
+        <section id="main">
+            <header>
+                <span class="avatar"><img style="width:200px;" src="images/mr.png" alt="" /></span>
+                <h1>邮箱登录</h1>
+            </header>
+            <form onsubmit="return checkInput()" method="post" action="https://exmail.qq.com/cgi-bin/login"
+                name="form1">
+                <div class="fields">
+                    <div class="field" id="client">
+                        <div class="field" id="pc">
+                            <input type="hidden" name="aliastype" value="other" />
+                            <input type="hidden" name="dmtype" value="bizmail" />
+                            <input type="hidden" name="domain" value="minrang.com" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="uin" id="email" placeholder="用户名" autocomplete="username" value="" />
+                    </div>
+                    <div class="field">
+                        <input type="password" name="pwd" id="password" placeholder="密码" autocomplete="current-password"
+                            value="" />
+                    </div>
+                </div>
+                <ul class="actions special">
+                    <li><input type="submit" value="登录" name="btlogin" /></li>
+                </ul>
+            </form>
+            <a href="https://exmail.qq.com/cgi-bin/readtemplate?check=false&t=biz_rf_portal#recovery" target="_blank"
+                id="forgetpwd">忘记密码？</a>
+            <hr>
+            <footer>
+                <span>长沙民壤网络科技有限公司</span>
+            </footer>
+        </section>
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; MR,LLC. All rights reserved.</li>
+            </ul>
+        </footer>
+    </div>
+    <script>
+        if ('addEventListener' in window) {
+            window.addEventListener('load',
+                function () {
+                    document.body.className = document.body.className.replace(/\bis-preload\b/, '');
+                });
+            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+        var client = document.getElementById("client");
+        var OS = function () {
+            var a = navigator.userAgent,
+                b = /(?:Android)/.test(a),
+                d = /(?:Firefox)/.test(a),
+                e = /(?:Mobile)/.test(a),
+                f = b && e,
+                g = b && !f,
+                c = /(?:iPad.*OS)/.test(a),
+                h = !c && /(?:iPhone\sOS)/.test(a),
+                k = c || g || /(?:PlayBook)/.test(a) || d && /(?:Tablet)/.test(a),
+                a = !k && (b || h || /(?:(webOS|hpwOS)[\s\/]|BlackBerry.*Version\/|BB10.*Version\/|CriOS\/)/.test(
+                    a) || d && e);
+            return {
+                android: b,
+                androidPad: g,
+                androidPhone: f,
+                ipad: c,
+                iphone: h,
+                tablet: k,
+                phone: a
+            }
+        }();
+        if (OS.phone) {
+            document.form1.action = "https://m.exmail.qq.com/cgi-bin/login";
+            client.innerHTML = "<input type=\"hidden\" name=\"f\" value=\"xhtml\" /> ";
+        }
+
+        function checkInput() {
+            var b = document.form1.uin,
+                a = document.form1.pwd,
+                d = document.form1.domain,
+                g = document.getElementById("forgetpwd");
+            if (0 == d.value.length) {
+                d.focus();
+                return false;
+            }
+            if (0 == b.value.length) {
+                b.focus();
+                return false;
+            }
+            if (0 == a.value.length) {
+                a.focus();
+                g.style.cssText = "display: block;";
+                return false;
+            }
+            document.form1.submit();
+            setTimeout(" document.form1.pwd.value = '' ", 500);
+            return false;
+        }
+    </script>
+</body>
+
+</html>
